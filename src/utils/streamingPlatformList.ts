@@ -1,0 +1,1 @@
+export const streamingPlatformList = ["Twitch", "YouTube", "TikTok", "Kick", "Rumble"]
