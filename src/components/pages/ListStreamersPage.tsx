@@ -1,6 +1,6 @@
 import React from "react";
-import StreamerSubmissionForm from "../StreamerSubmissionForm";
-import ListStreamers from "../ListStreamer";
+import StreamerSubmissionForm from "../streamers/StreamerSubmissionForm";
+import ListStreamers from "../streamers/ListStreamer";
 
 const ListStreamersPage = () => {
 	return (

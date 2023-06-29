@@ -1,5 +1,5 @@
 import React from "react";
-import { streamingPlatformList } from "../utils/streamingPlatformList";
+import { streamingPlatformList } from "../../utils/streamingPlatformList";
 
 const StreamerSubmissionForm = () => {
 	const platforms = streamingPlatformList.map(platform => (
