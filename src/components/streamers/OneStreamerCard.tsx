@@ -1,4 +1,3 @@
-import { platform } from "os";
 import React from "react";
 
 interface Props {
