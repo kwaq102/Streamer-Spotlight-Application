@@ -2,11 +2,15 @@ import React from "react";
 import StreamerSubmissionForm from "../streamers/StreamerSubmissionForm";
 import ListStreamers from "../streamers/ListStreamer";
 
-const ListStreamersPage = () => {
+interface Props {
+	refreshStreamers: () => void;
+}
+
+const ListStreamersPage = ({ refreshStreamers }: Props) => {
 	return (
 		<>
 			<StreamerSubmissionForm />
-			<ListStreamers />
+			<ListStreamers refreshStreamers={refreshStreamers} />
 		</>
 	);
 };

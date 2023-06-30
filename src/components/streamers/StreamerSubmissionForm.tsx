@@ -33,18 +33,16 @@ const StreamerSubmissionForm = () => {
 				body: JSON.stringify({ ...form, upvotes: 0, downvotes: 0 }),
 			});
 		} catch (e) {
-			console.log(e);
+			console.error(e);
 		}
 
 		clearForm();
 	};
 
 	const platforms = streamingPlatformList.map(platform => (
-		<>
-			<option value={platform} key={platform}>
-				{platform}
-			</option>
-		</>
+		<option value={platform} key={platform}>
+			{platform}
+		</option>
 	));
 
 	return (

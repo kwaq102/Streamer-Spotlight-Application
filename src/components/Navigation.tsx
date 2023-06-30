@@ -1,19 +1,26 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { NavLink } from "react-router-dom";
 
-const Navigation = () => {
-	const streamerId = "123456";
+interface Props {
+	streamerId: string;
+	setStreamerId: Dispatch<SetStateAction<string>>;
+}
 
+const Navigation = ({ streamerId, setStreamerId }: Props) => {
 	return (
 		<nav>
 			<ul>
 				<li>
-					<NavLink to="/streamers" end>
+					<NavLink onClick={() => setStreamerId("")} to="/streamers" end>
 						Show All
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to={`/streamers/${streamerId}`}>Streamer info</NavLink>
+					<NavLink
+						to={`/streamers/${streamerId ? streamerId : "streamer-info"}`}
+					>
+						Streamer info
+					</NavLink>
 				</li>
 			</ul>
 		</nav>
