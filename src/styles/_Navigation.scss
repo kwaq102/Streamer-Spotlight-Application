@@ -1,0 +1,49 @@
+.navigation {
+	background-color: rgb(40, 47, 44);
+
+	.navigation__wprapper {
+		width: 90%;
+		max-width: 1500px;
+		margin: 0 auto;
+		display: flex;
+		padding: 20px 0;
+
+		.navigation__heading {
+			margin: 0 auto;
+			font-size: 2.8rem;
+			text-transform: uppercase;
+			color: white;
+			cursor: default;
+
+			.navigation__heading__span {
+				color: rgb(70, 187, 173);
+			}
+		}
+
+		.navigation__list {
+			width: 70%;
+			display: flex;
+			align-self: center;
+			margin-left: 50px;
+			.navigation__list__element {
+				list-style: none;
+				.navigation__list__link {
+					padding: 5px 10px;
+					font-size: 1.6rem;
+					font-weight: bold;
+					color: rgb(220, 227, 223);
+					text-transform: uppercase;
+					text-decoration: none;
+
+					&:hover {
+						color: rgb(70, 187, 173);
+					}
+				}
+
+				.navigation__list__link.active {
+					color: rgb(70, 187, 173);
+				}
+			}
+		}
+	}
+}
