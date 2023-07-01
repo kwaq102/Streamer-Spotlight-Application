@@ -23,9 +23,9 @@ const ListStreamers = ({ refreshStreamers }: Props) => {
 	));
 
 	return (
-		<section>
-			<h2>List Streamers</h2>
-			<div>{displayAllStreamers}</div>
+		<section className="allStreamers">
+			<h2 className="allStreamers__heading H2">List Streamers</h2>
+			<div className="allStreamers__listWrapper"> {displayAllStreamers}</div>
 		</section>
 	);
 };

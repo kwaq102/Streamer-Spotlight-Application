@@ -2,9 +2,7 @@
 	background-color: rgb(40, 47, 44);
 
 	.navigation__wprapper {
-		width: 90%;
-		max-width: 1500px;
-		margin: 0 auto;
+		@include widthContent();
 		display: flex;
 		padding: 20px 0;
 

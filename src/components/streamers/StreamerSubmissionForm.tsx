@@ -40,26 +40,32 @@ const StreamerSubmissionForm = () => {
 	};
 
 	const platforms = streamingPlatformList.map(platform => (
-		<option value={platform} key={platform}>
+		<option
+			className="streamerForm__addForm__field field-option"
+			value={platform}
+			key={platform}
+		>
 			{platform}
 		</option>
 	));
 
 	return (
-		<section>
-			<h2>Streamer Submission Form</h2>
-			<form onSubmit={addStreamer}>
-				<label>
-					Streamer name:
+		<section className="streamerForm">
+			<h2 className="streamerForm__heading H2">Streamer Submission Form</h2>
+			<form onSubmit={addStreamer} className="streamerForm__addForm">
+				<label className="streamerForm__addForm__label label-name">
+					Streamer name
 					<input
+						className="streamerForm__addForm__field field-text"
 						type="text"
 						value={form.name}
 						onChange={e => updateForm("name", e.target.value)}
 					/>
 				</label>
-				<label>
-					Platrofm:
+				<label className="streamerForm__addForm__label label-platform">
+					Platrofm
 					<select
+						className="streamerForm__addForm__field field-select"
 						name="platforms"
 						value={form.platform}
 						onChange={e => updateForm("platform", e.target.value)}
@@ -67,14 +73,17 @@ const StreamerSubmissionForm = () => {
 						{platforms}
 					</select>
 				</label>
-				<label>
-					Description:
+				<label className="streamerForm__addForm__label label-description">
+					Description
 					<textarea
+						className="streamerForm__addForm__field field-textarea"
 						onChange={e => updateForm("description", e.target.value)}
 						value={form.description}
 					/>
 				</label>
-				<button>Add Streamer</button>
+				<button className="streamerForm__addForm__button btn">
+					Add Streamer
+				</button>
 			</form>
 		</section>
 	);

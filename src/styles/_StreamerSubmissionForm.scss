@@ -1,0 +1,67 @@
+.streamerForm {
+	@include widthContent();
+	margin-top: 30px;
+
+	.streamerForm__heading {
+		font-size: 2.8rem;
+	}
+
+	.streamerForm__addForm {
+		width: 50%;
+		margin: 30px 0;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		grid-template-areas:
+			"name description"
+			"platform description"
+			"button description";
+
+		.streamerForm__addForm__label {
+			display: block;
+			margin-bottom: 10px;
+			font-size: 1.6rem;
+
+			.streamerForm__addForm__field {
+				display: block;
+				width: 100%;
+				margin-top: 5px;
+				padding: 5px 10px;
+				font-size: 1.6rem;
+
+				&:focus-visible {
+					outline: none;
+				}
+			}
+
+			.field-textarea {
+				// TODO ustawić tę wysokość automatycznie, anie na sztywno
+				height: 91%;
+				width: 80%;
+				position: absolute;
+			}
+
+			&:focus-within {
+				color: rgb(70, 187, 173);
+			}
+		}
+
+		.streamerForm__addForm__button {
+			grid-area: button;
+			padding: 10px 20px;
+			margin-top: 10px;
+		}
+
+		.label-name {
+			grid-area: name;
+		}
+		.label-platform {
+			grid-area: platform;
+		}
+		.label-description {
+			grid-area: description;
+			width: 90%;
+			margin-left: 10px;
+			position: relative;
+		}
+	}
+}

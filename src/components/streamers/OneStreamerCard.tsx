@@ -55,10 +55,10 @@ const OneStreamerCard = ({
 	};
 
 	return (
-		<div>
-			<h5>{name}</h5>
-			<p>{platform}</p>
-			<p>{description}</p>
+		<div className="cardStreamer">
+			<h3 className="cardStreamer__heading H3">{name}</h3>
+			<p className="cardStreamer__text">{platform}</p>
+			<p className="cardStreamer__text">{description}</p>
 
 			<form onSubmit={handleVotes}>
 				<div>
