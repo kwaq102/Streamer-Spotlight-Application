@@ -1,6 +1,12 @@
 import React, { useState, useEffect, SyntheticEvent, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { StreamerContext } from "../../App";
+
+import thumbUp from "../../images/thumbs-up.svg";
+import thumbDown from "../../images/thumbs-down.svg";
+
+const avatarLink =
+	"https://static-cdn.jtvnw.net/jtv_user_pictures/asmongold-profile_image-f7ddcbd0332f5d28-300x300.png";
 
 interface Props {
 	id: string;
@@ -28,11 +34,7 @@ const OneStreamerCard = ({
 		downvotes,
 	});
 
-	const navigate = useNavigate();
-
-	useEffect(() => {
-		refreshStreamers();
-	}, [votes.upvotes, votes.downvotes]);
+	// const navigate = useNavigate();
 
 	const handleVotes = async (e: SyntheticEvent) => {
 		e.preventDefault();
@@ -56,13 +58,23 @@ const OneStreamerCard = ({
 
 	return (
 		<div className="cardStreamer">
-			<h3 className="cardStreamer__heading H3">{name}</h3>
-			<p className="cardStreamer__text">{platform}</p>
-			<p className="cardStreamer__text">{description}</p>
+			<Link
+				to={`./${id}`}
+				className="cardStreamer__showInfo-link"
+				onClick={() => setStreamerId(id)}
+			>
+				<img className="cardStreamer__avatar" src={avatarLink} alt="avatar" />
+				<button className="cardStreamer__showInfo-button btn">Show more</button>
+			</Link>
 
-			<form onSubmit={handleVotes}>
-				<div>
+			<h3 className="cardStreamer__heading H3">{name}</h3>
+			<p className="cardStreamer__text text-platform">{platform}</p>
+			<p className="cardStreamer__text text-description">{description}</p>
+
+			<form className="cardStreamer__formVote" onSubmit={handleVotes}>
+				<div className="cardStreamer__formVote__wrapperVote voteUp">
 					<button
+						className="cardStreamer__formVote__button"
 						onClick={() => {
 							setVotes({
 								...votes,
@@ -70,12 +82,17 @@ const OneStreamerCard = ({
 							});
 						}}
 					>
-						+
+						<img
+							className="cardStreamer__formVote_icon"
+							src={thumbUp}
+							alt="ddd"
+						/>
 					</button>
-					<p>Liczba głosów + to {upvotes}</p>
+					<p className="cardStreamer__formVote__result">{upvotes}</p>
 				</div>
-				<div>
+				<div className="cardStreamer__formVote__wrapperVote voteDown">
 					<button
+						className="cardStreamer__formVote__button"
 						onClick={() => {
 							setVotes({
 								...votes,
@@ -83,19 +100,17 @@ const OneStreamerCard = ({
 							});
 						}}
 					>
-						-
+						<img
+							className="cardStreamer__formVote_icon"
+							src={thumbDown}
+							alt="thumb down icon"
+						/>
 					</button>
-					<p>Liczba głosów - to {downvotes}</p>
+					<p className="cardStreamer__formVote__result resultDown">
+						{downvotes}
+					</p>
 				</div>
 			</form>
-			<button
-				onClick={() => {
-					setStreamerId(id);
-					navigate(`./${id}`);
-				}}
-			>
-				Show more info
-			</button>
 		</div>
 	);
 };
