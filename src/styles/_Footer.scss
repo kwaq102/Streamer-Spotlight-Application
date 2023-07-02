@@ -1,0 +1,24 @@
+.footer {
+	margin-top: auto;
+	padding: 10px 0;
+	background-color: $secondaryBackgroundColor;
+
+	.footer__wrapper {
+		@include widthContent();
+		text-align: center;
+		font-size: 1.2rem;
+
+		.footer__wrapper__text {
+			margin: 2px 0;
+			.footer__wrapper__text__link {
+				text-decoration: none;
+				color: $textColor;
+			}
+		}
+
+		.footer__wrapper__text-author {
+			color: $primaryColor;
+			font-weight: bold;
+		}
+	}
+}

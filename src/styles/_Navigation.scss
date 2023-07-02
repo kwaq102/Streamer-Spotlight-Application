@@ -1,5 +1,5 @@
 .navigation {
-	background-color: rgb(40, 47, 44);
+	background-color: $secondaryBackgroundColor;
 
 	.navigation__wprapper {
 		@include widthContent();

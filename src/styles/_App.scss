@@ -10,3 +10,9 @@
 	color: $textColor;
 	background-color: rgb(20, 27, 23);
 }
+
+.App {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}

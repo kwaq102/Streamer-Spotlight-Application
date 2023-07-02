@@ -6,6 +6,7 @@ import ListStreamersPage from "./components/pages/ListStreamersPage";
 import ErrorPage from "./components/pages/ErrorPage";
 import SingleStreamer from "./components/pages/SingleStreamer";
 import StreamerSelect from "./components/streamers/StreamerSelect";
+import Footer from "./components/Footer";
 
 interface StreamerContextType {
 	streamers: StreamerEntity[];
@@ -34,27 +35,32 @@ function App() {
 	}, []);
 
 	return (
-		<div className="App">
-			<Navigation streamerId={streamerId} setStreamerId={setStreamerId} />
-			<StreamerContext.Provider value={{ streamers, setStreamerId }}>
-				<Routes>
-					<Route path="/" element={<Navigate replace to="/streamers" />} />
-					<Route
-						path="/streamers"
-						element={<ListStreamersPage refreshStreamers={refreshStreamers} />}
-					/>
-					<Route
-						path={`/streamers/streamer-info`}
-						element={<StreamerSelect />}
-					/>
-					<Route
-						path={`/streamers/:${streamerId}`}
-						element={<SingleStreamer streamerId={streamerId} />}
-					/>
-					<Route path="*" element={<ErrorPage />} />
-				</Routes>
-			</StreamerContext.Provider>
-		</div>
+		<>
+			<div className="App">
+				<Navigation streamerId={streamerId} setStreamerId={setStreamerId} />
+				<StreamerContext.Provider value={{ streamers, setStreamerId }}>
+					<Routes>
+						<Route path="/" element={<Navigate replace to="/streamers" />} />
+						<Route
+							path="/streamers"
+							element={
+								<ListStreamersPage refreshStreamers={refreshStreamers} />
+							}
+						/>
+						<Route
+							path={`/streamers/streamer-info`}
+							element={<StreamerSelect />}
+						/>
+						<Route
+							path={`/streamers/:${streamerId}`}
+							element={<SingleStreamer streamerId={streamerId} />}
+						/>
+						<Route path="*" element={<ErrorPage />} />
+					</Routes>
+				</StreamerContext.Provider>
+				<Footer />
+			</div>
+		</>
 	);
 }
 
