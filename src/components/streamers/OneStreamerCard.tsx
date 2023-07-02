@@ -34,8 +34,6 @@ const OneStreamerCard = ({
 		downvotes,
 	});
 
-	// const navigate = useNavigate();
-
 	const handleVotes = async (e: SyntheticEvent) => {
 		e.preventDefault();
 		try {
@@ -63,14 +61,19 @@ const OneStreamerCard = ({
 				className="cardStreamer__showInfo-link"
 				onClick={() => setStreamerId(id)}
 			>
-				<img className="cardStreamer__avatar" src={avatarLink} alt="avatar" />
+				<img
+					className="cardStreamer__avatar"
+					src={avatarLink}
+					alt="user avatar"
+				/>
 				<button className="cardStreamer__showInfo-button btn">Show more</button>
 			</Link>
 
-			<h3 className="cardStreamer__heading H3">{name}</h3>
+			<h4 className="cardStreamer__heading H4">{name}</h4>
 			<p className="cardStreamer__text text-platform">{platform}</p>
 			<p className="cardStreamer__text text-description">{description}</p>
 
+			{/* może forma do innego komponentu jak będzie czas */}
 			<form className="cardStreamer__formVote" onSubmit={handleVotes}>
 				<div className="cardStreamer__formVote__wrapperVote voteUp">
 					<button

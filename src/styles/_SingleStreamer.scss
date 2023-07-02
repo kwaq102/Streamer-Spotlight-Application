@@ -1,0 +1,44 @@
+.singleStreamer {
+	@include widthContent;
+	margin-top: 30px;
+
+	.singleStreamer__heading {
+		font-size: 2.8rem;
+	}
+
+	.singleStreamer__wrapperInfo {
+		width: 40%;
+		margin: 30px auto;
+		padding: 5px;
+		text-align: center;
+
+		.singleStreamer__text {
+			margin: 5px 0;
+			text-align: left;
+			font-size: 1.6rem;
+			.singleStreamer__text__span {
+				color: $secondaryColor;
+				font-weight: bold;
+			}
+		}
+
+		.text-description {
+			text-align: justify;
+
+			.singleStreamer__text__span {
+				// display: flex;
+				font-weight: normal;
+				font-size: 1.4rem;
+			}
+		}
+	}
+
+	.singleStreamer__backLink {
+		display: block;
+		text-align: center;
+		.singleStreamer__backLink__button {
+			@include btn();
+			padding: 10px 20px;
+		}
+	}
+}

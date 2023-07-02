@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { StreamerContext } from "../../App";
+import { Link } from "react-router-dom";
 
 interface Props {
 	streamerId: string;
@@ -8,26 +9,44 @@ interface Props {
 const SingleStreamer = ({ streamerId }: Props) => {
 	const context = useContext(StreamerContext);
 	const { streamers } = context;
-
 	const streamer = streamers.find(streamer => streamer._id === streamerId);
 
 	return (
-		<section>
-			<h2>Streamer record</h2>
+		<section className="singleStreamer">
+			<h2 className="singleStreamer__heading H2">Streamer record/info</h2>
 			{streamer ? (
-				<div>
-					<h4>Streamer info</h4>
+				<div className="singleStreamer__wrapperInfo">
 					<img
+						className="singleStreamer__avatar"
 						src="https://static-cdn.jtvnw.net/jtv_user_pictures/asmongold-profile_image-f7ddcbd0332f5d28-300x300.png"
-						alt=""
+						alt="user avatar"
+						// można avatar gdzieś przenieść
 					/>
-					<p>{streamer.name}</p>
-					<p>{streamer.platform}</p>
-					<p>{streamer.description}</p>
+					<p className="singleStreamer__text text-name">
+						Streamer:{" "}
+						<span className="singleStreamer__text__span">{streamer.name}</span>
+					</p>
+					<p className="singleStreamer__text text-platform">
+						Platform:{" "}
+						<span className="singleStreamer__text__span">
+							{streamer.platform}
+						</span>
+					</p>
+					<p className="singleStreamer__text text-description">
+						Description:{" "}
+						<span className="singleStreamer__text__span">
+							{streamer.description}
+						</span>
+					</p>
 				</div>
 			) : (
-				<p>Wybierz streamera</p>
+				<p className="singleStreamer__text">Wybierz streamera</p>
 			)}
+			<Link to="/streamers" className="singleStreamer__backLink">
+				<button className="singleStreamer__backLink__button btn">
+					Back to list
+				</button>
+			</Link>
 		</section>
 	);
 };
