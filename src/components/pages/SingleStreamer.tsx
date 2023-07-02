@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { StreamerContext } from "../../App";
 import { Link } from "react-router-dom";
+import { avatarLink } from "../../utils/avatar";
 
 interface Props {
 	streamerId: string;
@@ -13,14 +14,13 @@ const SingleStreamer = ({ streamerId }: Props) => {
 
 	return (
 		<section className="singleStreamer">
-			<h2 className="singleStreamer__heading H2">Streamer record/info</h2>
+			<h2 className="singleStreamer__heading H2">Streamer record</h2>
 			{streamer ? (
 				<div className="singleStreamer__wrapperInfo">
 					<img
 						className="singleStreamer__avatar"
-						src="https://static-cdn.jtvnw.net/jtv_user_pictures/asmongold-profile_image-f7ddcbd0332f5d28-300x300.png"
+						src={avatarLink}
 						alt="user avatar"
-						// można avatar gdzieś przenieść
 					/>
 					<p className="singleStreamer__text text-name">
 						Streamer:{" "}

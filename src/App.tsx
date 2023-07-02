@@ -22,8 +22,6 @@ function App() {
 	const [streamers, setStreamers] = useState<StreamerEntity[]>([]);
 	const [streamerId, setStreamerId] = useState<string>("");
 
-	console.log(streamerId);
-
 	const refreshStreamers = async () => {
 		const res = await fetch("http://localhost:3001/streamers");
 		const data = await res.json();

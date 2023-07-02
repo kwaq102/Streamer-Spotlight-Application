@@ -105,11 +105,13 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 						style={nameError ? errorStyles : {}}
 					/>
 					{nameError && (
-						<p className="streamerForm__addForm__errorText">Name is wrong.</p>
+						<span className="streamerForm__addForm__errorText">
+							Name is wrong
+						</span>
 					)}
 				</label>
 				<label className="streamerForm__addForm__label label-platform">
-					Platrofm
+					<span>Platrofm</span>
 					<select
 						className="streamerForm__addForm__field field-select"
 						name="platforms"
@@ -129,7 +131,7 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 								Description
 							</span>
 							<span className="streamerForm__addForm__errorText descriptionError">
-								Description is wrong.
+								Description is wrong
 							</span>
 						</>
 					) : (
@@ -142,7 +144,6 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 						style={descriptionError ? errorStyles : {}}
 					/>
 				</label>
-
 				<button
 					className="streamerForm__addForm__button btn"
 					onClick={validateForm}
