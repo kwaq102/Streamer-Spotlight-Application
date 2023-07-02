@@ -1,0 +1,18 @@
+.error {
+	@include widthContent();
+	text-align: center;
+
+	.error__info {
+		margin-top: 5%;
+		font-size: 1.6rem;
+	}
+
+	.error__info__link {
+		display: block;
+		margin-top: 20px;
+		.error__info__button {
+			@include btn();
+			padding: 10px 20px;
+		}
+	}
+}

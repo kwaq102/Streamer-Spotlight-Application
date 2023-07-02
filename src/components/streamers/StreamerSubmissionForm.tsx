@@ -4,7 +4,7 @@ import { streamingPlatformList } from "../../utils/streamingPlatformList";
 const StreamerSubmissionForm = () => {
 	const [form, setForm] = useState({
 		name: "",
-		platform: "",
+		platform: "Twitch",
 		description: "",
 	});
 
@@ -16,13 +16,12 @@ const StreamerSubmissionForm = () => {
 	};
 
 	const clearForm = () => {
-		setForm({ name: "", platform: "", description: "" });
+		setForm({ name: "", platform: "Twitch", description: "" });
 	};
 
 	const addStreamer = async (e: SyntheticEvent) => {
 		e.preventDefault();
 		console.log(form);
-		console.log("dodajemy streamera");
 
 		try {
 			await fetch(`http://localhost:3001/streamers`, {
