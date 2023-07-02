@@ -1,0 +1,19 @@
+.streamerSelect {
+	@include widthContent();
+	text-align: center;
+
+	.streamerSelect__info {
+		margin-top: 5%;
+		font-size: 1.6rem;
+	}
+
+	.streamerSelect__link {
+		display: block;
+		margin-top: 20px;
+
+		.streamerSelect__button {
+			@include btn();
+			padding: 10px 20px;
+		}
+	}
+}
