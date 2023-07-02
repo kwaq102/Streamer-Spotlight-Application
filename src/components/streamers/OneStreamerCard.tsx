@@ -1,5 +1,5 @@
-import React, { useState, useEffect, SyntheticEvent, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, SyntheticEvent, useContext } from "react";
+import { Link } from "react-router-dom";
 import { StreamerContext } from "../../App";
 
 import thumbUp from "../../images/thumbs-up.svg";
@@ -96,7 +96,7 @@ const OneStreamerCard = ({
 						onClick={() => {
 							setVotes({
 								...votes,
-								downvotes: downvotes - 1,
+								downvotes: downvotes + 1,
 							});
 						}}
 					>

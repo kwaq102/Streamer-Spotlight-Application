@@ -1,5 +1,19 @@
 @mixin widthContent() {
 	width: 90%;
-	max-width: 1500px;
+	max-width: 1400px;
 	margin: 0 auto;
+}
+
+@mixin btn() {
+	background-color: rgb(10, 17, 13);
+	border: 1px solid rgb(60, 67, 63);
+	border-radius: 3px;
+	color: $textColor;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.1s linear;
+
+	&:hover {
+		background-color: $primaryColor;
+	}
 }

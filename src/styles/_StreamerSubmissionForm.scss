@@ -45,6 +45,10 @@
 			}
 		}
 
+		.btn {
+			@include btn();
+		}
+
 		.streamerForm__addForm__button {
 			grid-area: button;
 			padding: 10px 20px;
