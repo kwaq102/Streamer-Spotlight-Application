@@ -10,7 +10,7 @@
 		width: 50%;
 		margin: 30px 0;
 		display: grid;
-		grid-template-columns: auto 1fr;
+		grid-template-columns: 0.7fr 1fr;
 		grid-template-areas:
 			"name description"
 			"platform description"
@@ -33,6 +33,10 @@
 				}
 			}
 
+			.field-text {
+				position: relative;
+			}
+
 			.field-textarea {
 				// TODO ustawić tę wysokość automatycznie, anie na sztywno
 				height: 91%;
@@ -42,6 +46,12 @@
 
 			&:focus-within {
 				color: rgb(70, 187, 173);
+			}
+
+			.streamerForm__addForm__errorText {
+				margin-top: 5px;
+				color: red;
+				font-size: 1rem;
 			}
 		}
 
@@ -66,6 +76,11 @@
 			width: 90%;
 			margin-left: 10px;
 			position: relative;
+		}
+		.descriptionError {
+			grid-area: descriptionError;
+			width: 80%;
+			margin-left: 10px;
 		}
 	}
 }

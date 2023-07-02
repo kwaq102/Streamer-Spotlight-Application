@@ -9,7 +9,7 @@ interface Props {
 const ListStreamersPage = ({ refreshStreamers }: Props) => {
 	return (
 		<>
-			<StreamerSubmissionForm />
+			<StreamerSubmissionForm refreshStreamers={refreshStreamers} />
 			<ListStreamers refreshStreamers={refreshStreamers} />
 		</>
 	);
