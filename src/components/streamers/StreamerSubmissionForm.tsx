@@ -1,6 +1,7 @@
-import React, { useState, SyntheticEvent } from "react";
+import React, { useState, useEffect, SyntheticEvent } from "react";
 import { streamingPlatformList } from "../../utils/streamingPlatformList";
 import { errorStyles } from "../../utils/styles";
+import SuccessInfo from "../SuccessInfo";
 
 interface Props {
 	refreshStreamers: () => void;
@@ -11,8 +12,9 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 		platform: "Twitch",
 		description: "",
 	});
-
 	const { name, platform, description } = form;
+
+	const [addedStreamer, setAddedStreamer] = useState(false);
 
 	const [nameError, setNameError] = useState(false);
 	const [descriptionError, setDescriptionError] = useState(false);
@@ -27,7 +29,16 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 		</option>
 	));
 
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setAddedStreamer(false);
+		}, 6000);
+
+		return () => clearInterval(timer);
+	}, [addedStreamer]);
+
 	const updateForm = (key: string, value: string) => {
+		setAddedStreamer(false);
 		setNameError(false);
 		setDescriptionError(false);
 		setForm(form => ({
@@ -65,9 +76,9 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 		} catch (e) {
 			console.error(e);
 		}
-
 		refreshStreamers();
 		clearForm();
+		setAddedStreamer(true);
 	};
 
 	return (
@@ -139,6 +150,7 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 					Add Streamer
 				</button>
 			</form>
+			{addedStreamer && <SuccessInfo text="Add streamer has been success!" />}
 		</section>
 	);
 };
