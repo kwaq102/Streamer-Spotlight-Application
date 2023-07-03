@@ -1,6 +1,7 @@
 .singleStreamer {
 	@include widthContent;
 	margin-top: 30px;
+	margin-bottom: 30px;
 
 	.singleStreamer__heading {
 		font-size: 2.8rem;
@@ -21,8 +22,7 @@
 				font-weight: bold;
 			}
 		}
-
-		.text-description {
+		px .text-description {
 			text-align: justify;
 
 			.singleStreamer__text__span {

@@ -51,7 +51,7 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 		if (name.length < 3 || name.length > 50) {
 			setNameError(true);
 		}
-		if (description.length < 5 || description.length > 50000) {
+		if (description.length < 5 || description.length > 5000) {
 			setDescriptionError(true);
 		}
 	};
@@ -126,7 +126,7 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 						<>
 							<span
 								className="tooltip"
-								data-tooltip="The length of description should be between 5 and 50 000 characters"
+								data-tooltip="The length of description should be between 5 and 5000 characters"
 							>
 								Description
 							</span>

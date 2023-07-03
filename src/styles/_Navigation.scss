@@ -4,11 +4,12 @@
 	.navigation__wprapper {
 		@include widthContent();
 		display: flex;
+		align-items: center;
 		padding: 20px 0;
 
 		.navigation__heading {
 			margin: 0 auto;
-			font-size: 2.8rem;
+			font-size: 2.4rem;
 			text-transform: uppercase;
 			color: white;
 			cursor: default;
@@ -16,6 +17,10 @@
 			.navigation__heading__span {
 				color: rgb(70, 187, 173);
 			}
+		}
+
+		.navigation__heading {
+			margin: 0 0 0 10px;
 		}
 
 		.navigation__list {
@@ -40,6 +45,87 @@
 
 				.navigation__list__link.active {
 					color: rgb(70, 187, 173);
+				}
+			}
+		}
+
+		@media (max-width: map-get($breakpoints, m)) {
+			width: 100%;
+			.navigation__burger {
+				width: 25px;
+				height: 25px;
+				margin-left: 15px;
+				cursor: pointer;
+
+				.navigation__burger__icon,
+				.navigation__closeX__icon {
+					display: block;
+					height: 100%;
+					width: 25px;
+				}
+				.navigation__closeX__icon {
+					width: 20px;
+					margin: 0 auto;
+				}
+			}
+			.active {
+				display: block;
+			}
+
+			.navigation__list {
+				flex-direction: column;
+				margin: 0;
+				padding: 20px 10px 20px 0;
+				position: absolute;
+				top: 80px;
+				left: 0;
+				width: 200px;
+				background-color: $secondaryBackgroundColor;
+				z-index: 2;
+				transform: translateX(-100%);
+				transition: transform 0.3s ease-in-out;
+
+				.navigation__list__element {
+					.navigation__list__link {
+						display: block;
+						padding: 15px 0 10px 10px;
+					}
+				}
+			}
+			.navigation__list.showNav {
+				transform: translateX(0);
+			}
+		}
+		@media (max-width: map-get($breakpoints, s)) {
+			.navigation__heading {
+				font-size: 2rem;
+			}
+
+			.navigation__list {
+				top: 70px;
+				width: 150px;
+
+				.navigation__list__element {
+					.navigation__list__link {
+						font-size: 1.4rem;
+					}
+				}
+			}
+		}
+		@media (max-width: map-get($breakpoints, xs)) {
+			.navigation__heading {
+				font-size: 1.8rem;
+			}
+
+			.navigation__list {
+				top: 70px;
+				width: 150px;
+				padding: 10px 5px 10px 0;
+
+				.navigation__list__element {
+					.navigation__list__link {
+						font-size: 1.3rem;
+					}
 				}
 			}
 		}

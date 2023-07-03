@@ -1,5 +1,9 @@
-$width: (
-	l: 1500px,
+$breakpoints: (
+	xl: 1500px,
+	l: 1200px,
+	m: 1024px,
+	s: 770px,
+	xs: 500px,
 );
 
 $textColor: rgb(220, 227, 223);
