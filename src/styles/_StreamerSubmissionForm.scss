@@ -4,6 +4,10 @@
 
 	.streamerForm__heading {
 		font-size: 2.8rem;
+
+		@media (max-width: map-get($breakpoints, xs)) {
+			font-size: 2.2rem;
+		}
 	}
 
 	.streamerForm__addForm {
@@ -86,6 +90,51 @@
 		@media (max-width: map-get($breakpoints, l)) {
 			width: 80%;
 			grid-template-columns: 0.4fr 1fr;
+		}
+		@media (max-width: map-get($breakpoints,m)) {
+			width: 100%;
+
+			.label-description {
+				width: 100%;
+
+				.field-textarea {
+					width: 100%;
+				}
+			}
+		}
+
+		@media (max-width: map-get($breakpoints, xs)) {
+			width: 100%;
+			grid-template-columns: 1fr;
+			grid-template-areas:
+				"name"
+				"platform"
+				" description"
+				"button";
+
+			.label-description {
+				display: grid;
+				grid-template-areas:
+					"name"
+					"textarea"
+					"error";
+				margin-left: 0;
+
+				.field-textarea {
+					height: auto;
+					position: static;
+				}
+
+				.descriptionError {
+					grid-area: error;
+				}
+			}
+
+			.streamerForm__addForm__errorText {
+				display: block;
+				margin-left: 0;
+				margin-top: 0;
+			}
 		}
 	}
 }
