@@ -1,0 +1,7 @@
+.allStreamers {
+	.allStreamers__listWrapper {
+		@media (max-width: map-get($breakpoints, s)) {
+			justify-content: center;
+		}
+	}
+}

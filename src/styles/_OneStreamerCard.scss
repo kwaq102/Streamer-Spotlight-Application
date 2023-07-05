@@ -124,4 +124,17 @@
 			margin-left: 10px;
 		}
 	}
+
+	@media (max-width: map-get($breakpoints, m)) {
+		width: 25%;
+	}
+	@media (max-width: map-get($breakpoints, s)) {
+		width: 45%;
+		max-width: 300px;
+		max-height: 300px;
+		margin: 10px;
+	}
+	@media (max-width: map-get($breakpoints, xs)) {
+		width: 80%;
+	}
 }
