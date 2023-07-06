@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, MouseEvent } from "react";
 import { NavLink } from "react-router-dom";
 
 import barIcon from "../images/bars.svg";
@@ -7,11 +7,18 @@ import x from "../images/x.svg";
 interface Props {
 	streamerId: string;
 	setStreamerId: Dispatch<SetStateAction<string>>;
+	showNav: boolean;
+	setShowNav: Dispatch<SetStateAction<boolean>>;
+	closeNav: (e: MouseEvent) => void;
 }
 
-const Navigation = ({ streamerId, setStreamerId }: Props) => {
-	const [showNav, setShowNav] = useState(false);
-
+const Navigation = ({
+	streamerId,
+	setStreamerId,
+	showNav,
+	setShowNav,
+	closeNav,
+}: Props) => {
 	const sideNav = !showNav ? (
 		<img src={barIcon} alt="bar icon" className="navigation__burger__icon" />
 	) : (
@@ -37,7 +44,10 @@ const Navigation = ({ streamerId, setStreamerId }: Props) => {
 					<li className="navigation__list__element">
 						<NavLink
 							className="navigation__list__link"
-							onClick={() => setStreamerId("")}
+							onClick={e => {
+								closeNav(e);
+								setStreamerId("");
+							}}
 							to="/streamers"
 							end
 						>
@@ -48,6 +58,7 @@ const Navigation = ({ streamerId, setStreamerId }: Props) => {
 						<NavLink
 							className="navigation__list__link"
 							to={`/streamers/${streamerId ? streamerId : "streamer-info"}`}
+							onClick={e => closeNav(e)}
 						>
 							Streamer info
 						</NavLink>
