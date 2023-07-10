@@ -11,5 +11,12 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
+
+		.allStreamers__listWrapper__errorInfo {
+			margin: 20px auto;
+			text-align: center;
+			font-size: 1.6rem;
+			color: red;
+		}
 	}
 }

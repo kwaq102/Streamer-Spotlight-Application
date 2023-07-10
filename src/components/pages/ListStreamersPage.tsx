@@ -3,14 +3,18 @@ import StreamerSubmissionForm from "../streamers/StreamerSubmissionForm";
 import ListStreamers from "../streamers/ListStreamer";
 
 interface Props {
+	errorInfo: boolean;
 	refreshStreamers: () => void;
 }
 
-const ListStreamersPage = ({ refreshStreamers }: Props) => {
+const ListStreamersPage = ({ refreshStreamers, errorInfo }: Props) => {
 	return (
 		<>
 			<StreamerSubmissionForm refreshStreamers={refreshStreamers} />
-			<ListStreamers refreshStreamers={refreshStreamers} />
+			<ListStreamers
+				refreshStreamers={refreshStreamers}
+				errorInfo={errorInfo}
+			/>
 		</>
 	);
 };

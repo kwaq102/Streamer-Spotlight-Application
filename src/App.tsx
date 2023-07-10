@@ -23,6 +23,7 @@ function App() {
 	const [streamerId, setStreamerId] = useState<string>("");
 
 	const [showNav, setShowNav] = useState(false);
+	const [errorInfo, setErrorInfo] = useState(false);
 
 	const closeNav = (e: MouseEvent) => {
 		if (showNav) {
@@ -31,12 +32,27 @@ function App() {
 	};
 
 	const refreshStreamers = async () => {
-		const res = await fetch("http://localhost:3001/streamers");
-		const data = await res.json();
-		setStreamers(data);
+		try {
+			const res = await fetch("http://localhost:3001/streamers");
+
+			// TODO dodać jakiegoś loadinga
+
+			if (res.status === 500) {
+				console.log('"Failed to server, please try again later..."');
+				setErrorInfo(true);
+				return;
+			}
+			const data = await res.json();
+			setStreamers(data);
+		} catch (e: any) {
+			if (e.message === "Failed to fetch") {
+				console.error("Failed to server, please try again later...");
+			}
+		}
 	};
 
 	useEffect(() => {
+		setErrorInfo(false);
 		refreshStreamers();
 	}, []);
 
@@ -56,7 +72,10 @@ function App() {
 						<Route
 							path="/streamers"
 							element={
-								<ListStreamersPage refreshStreamers={refreshStreamers} />
+								<ListStreamersPage
+									refreshStreamers={refreshStreamers}
+									errorInfo={errorInfo}
+								/>
 							}
 						/>
 						<Route
