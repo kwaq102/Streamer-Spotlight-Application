@@ -1,13 +1,17 @@
-import React, { useState, useEffect, SyntheticEvent } from "react";
+import React, { useState, useEffect, SyntheticEvent, useContext } from "react";
 import { streamingPlatformList } from "../../utils/streamingPlatformList";
 import { errorStyles } from "../../utils/styles";
 import SuccessInfo from "../SuccessInfo";
 import Loader from "../loader/Loader";
+import { StreamerContext } from "../../App";
 
 interface Props {
 	refreshStreamers: () => void;
 }
 const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
+	const context = useContext(StreamerContext);
+	const { streamers } = context;
+
 	const [form, setForm] = useState({
 		name: "",
 		platform: "Twitch",
@@ -17,6 +21,7 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 	const [addedStreamer, setAddedStreamer] = useState(false);
 	const [loader, setLoader] = useState(false);
 	const [nameError, setNameError] = useState(false);
+	const [repeatedNameError, setRepeatedNameError] = useState(false);
 	const [descriptionError, setDescriptionError] = useState(false);
 
 	const platforms = streamingPlatformList.map(platform => (
@@ -40,6 +45,7 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 	const updateForm = (key: string, value: string) => {
 		setAddedStreamer(false);
 		setNameError(false);
+		setRepeatedNameError(false);
 		setDescriptionError(false);
 		setForm(form => ({
 			...form,
@@ -48,9 +54,18 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 	};
 
 	const validateForm = () => {
+		const repeatedStreamer = streamers.filter(
+			streamer => streamer.name === name
+		);
+
+		if (repeatedStreamer) {
+			setRepeatedNameError(true);
+		}
+
 		if (name.length < 3 || name.length > 50) {
 			setNameError(true);
 		}
+
 		if (description.length < 5 || description.length > 5000) {
 			setDescriptionError(true);
 		}
@@ -63,7 +78,7 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 	const addStreamer = async (e: SyntheticEvent) => {
 		e.preventDefault();
 
-		if (nameError || descriptionError) return;
+		if (nameError || descriptionError || repeatedNameError) return;
 
 		try {
 			setLoader(true);
@@ -111,6 +126,11 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 					{nameError && (
 						<span className="streamerForm__addForm__errorText">
 							Name is wrong
+						</span>
+					)}
+					{repeatedNameError && (
+						<span className="streamerForm__addForm__errorText">
+							This same name exist in database. Choose other.
 						</span>
 					)}
 				</label>
