@@ -21,7 +21,7 @@ export const StreamerContext = createContext<StreamerContextType>({
 function App() {
 	const [streamers, setStreamers] = useState<StreamerEntity[]>([]);
 	const [streamerId, setStreamerId] = useState<string>("");
-
+	const [loader, setLoader] = useState(false);
 	const [showNav, setShowNav] = useState(false);
 	const [errorInfo, setErrorInfo] = useState(false);
 
@@ -33,21 +33,23 @@ function App() {
 
 	const refreshStreamers = async () => {
 		try {
+			setLoader(true);
 			const res = await fetch("http://localhost:3001/streamers");
 
-			// TODO dodać jakiegoś loadinga
-
 			if (res.status === 500) {
-				console.log('"Failed to server, please try again later..."');
 				setErrorInfo(true);
 				return;
 			}
+
 			const data = await res.json();
 			setStreamers(data);
 		} catch (e: any) {
 			if (e.message === "Failed to fetch") {
+				setErrorInfo(true);
 				console.error("Failed to server, please try again later...");
 			}
+		} finally {
+			setLoader(false);
 		}
 	};
 
@@ -75,6 +77,7 @@ function App() {
 								<ListStreamersPage
 									refreshStreamers={refreshStreamers}
 									errorInfo={errorInfo}
+									loader={loader}
 								/>
 							}
 						/>

@@ -2,6 +2,7 @@ import React, { useState, useEffect, SyntheticEvent } from "react";
 import { streamingPlatformList } from "../../utils/streamingPlatformList";
 import { errorStyles } from "../../utils/styles";
 import SuccessInfo from "../SuccessInfo";
+import Loader from "../loader/Loader";
 
 interface Props {
 	refreshStreamers: () => void;
@@ -13,9 +14,8 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 		description: "",
 	});
 	const { name, platform, description } = form;
-
 	const [addedStreamer, setAddedStreamer] = useState(false);
-
+	const [loader, setLoader] = useState(false);
 	const [nameError, setNameError] = useState(false);
 	const [descriptionError, setDescriptionError] = useState(false);
 
@@ -66,6 +66,8 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 		if (nameError || descriptionError) return;
 
 		try {
+			setLoader(true);
+
 			await fetch(`http://localhost:3001/streamers`, {
 				method: "POST",
 				headers: {
@@ -75,6 +77,8 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 			});
 		} catch (e) {
 			console.error(e);
+		} finally {
+			setLoader(false);
 		}
 		refreshStreamers();
 		clearForm();
@@ -150,6 +154,14 @@ const StreamerSubmissionForm = ({ refreshStreamers }: Props) => {
 				>
 					Add Streamer
 				</button>
+				{loader && (
+					<Loader
+						styles={{
+							marginTop: "20px",
+							marginLeft: "calc(100% - 25px)",
+						}}
+					/>
+				)}
 			</form>
 			{addedStreamer && <SuccessInfo text="Add streamer has been success!" />}
 		</section>
